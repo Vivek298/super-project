@@ -5,11 +5,24 @@ import { CiTrash } from "react-icons/ci";
 
 import { IoIosAddCircleOutline } from "react-icons/io";
 
-
 const ItemType = "ITEM";
 const CategoryType = "CATEGORY";
 
-const Question1 = () => {
+const Question1 = (setQuestionsState) => {
+  const [currentQuesState, setCurrentQuesState] = useState({
+    type: "Categorize",
+    text: "Match the items to their correct categories.",
+    categories: [
+      {
+        name: "Fruits",
+        items: ["Apple", "Banana", "Orange"],
+      },
+      {
+        name: "Vehicles",
+        items: ["Car", "Bus", "Bike"],
+      },
+    ],
+  });
   const [categories, setCategories] = useState(["cat1", "cat2"]);
   const [items, setItems] = useState(["ans1", "ans2"]);
   const [newCategory, setNewCategory] = useState("");
@@ -24,9 +37,7 @@ const Question1 = () => {
     }
   };
 
-  const handleAddCategorize = () => {
-    
-  }
+  const handleAddCategorize = () => {};
 
   const handleAddItem = (e) => {
     if (e.key === "Enter" && newItem.trim() !== "") {
@@ -289,15 +300,6 @@ const Question1 = () => {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Vertical icons on the right */}
-      <div className="absolute top-1/2 right-[-40px] transform -translate-y-1/2 flex flex-col gap-2">
-        
-        <IoIosAddCircleOutline onClick={handleAddCategorize} size={28} className="cursor-pointer"/>
-        <CiTrash size={28} className=" cursor-pointer"/>
-
-        
       </div>
     </div>
   );

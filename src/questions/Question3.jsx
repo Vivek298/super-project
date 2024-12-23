@@ -10,7 +10,8 @@ const Question3 = () => {
   const [questions, setQuestions] = useState([
     {
       id: 1,
-      question: "According to the passage, one key feature of the water cycle is that:",
+      question:
+        "According to the passage, one key feature of the water cycle is that:",
       options: [
         "Water evaporates from the surface into the atmosphere.",
         "Water only exists in liquid form.",
@@ -47,7 +48,9 @@ const Question3 = () => {
 
         {/* Passage Input Section */}
         <div className="flex flex-col gap-2">
-          <label className="block text-sm font-medium text-gray-600">Passage</label>
+          <label className="block text-sm font-medium text-gray-600">
+            Passage
+          </label>
           <div className="relative border border-gray-300 rounded-md">
             <textarea
               value={passage}
@@ -60,7 +63,9 @@ const Question3 = () => {
 
         {/* Comprehension Points Section */}
         <div className="flex items-center gap-2">
-          <label className="block text-sm font-medium text-gray-600">Comprehension Points</label>
+          <label className="block text-sm font-medium text-gray-600">
+            Comprehension Points
+          </label>
           <input
             type="number"
             value={points}
@@ -74,15 +79,21 @@ const Question3 = () => {
         {questions.map((question, index) => (
           <div key={question.id} className="flex flex-col gap-2 mt-4">
             <div className="flex items-center gap-2">
-              <h3 className="text-base font-medium text-gray-700">Question {index + 1}</h3>
-              <span className="text-sm bg-blue-100 text-blue-500 rounded-full px-2 py-1">MCQ</span>
+              <h3 className="text-base font-medium text-gray-700">
+                Question {index + 1}
+              </h3>
+              <span className="text-sm bg-blue-100 text-blue-500 rounded-full px-2 py-1">
+                MCQ
+              </span>
             </div>
             <textarea
               value={question.question}
               onChange={(e) =>
                 setQuestions((prevQuestions) =>
                   prevQuestions.map((q) =>
-                    q.id === question.id ? { ...q, question: e.target.value } : q
+                    q.id === question.id
+                      ? { ...q, question: e.target.value }
+                      : q
                   )
                 )
               }
@@ -99,7 +110,9 @@ const Question3 = () => {
                     name={`option-${question.id}`}
                     value={option}
                     checked={question.selectedOption === optionIndex}
-                    onChange={() => handleOptionChange(question.id, optionIndex)}
+                    onChange={() =>
+                      handleOptionChange(question.id, optionIndex)
+                    }
                     className="form-radio text-blue-500"
                   />
                   <input
@@ -135,12 +148,6 @@ const Question3 = () => {
         >
           + Add MCQ
         </button>
-
-        {/* Vertical Icons on the Right */}
-        <div className="absolute top-1/2 right-[-40px] transform -translate-y-1/2 flex flex-col gap-2">
-          <IoIosAddCircleOutline size={28} className="cursor-pointer" title="Add Question" />
-          <CiTrash size={28} className="cursor-pointer" title="Delete Question" />
-        </div>
       </div>
     </DndProvider>
   );

@@ -29,7 +29,10 @@ const Question2 = () => {
     if (range && range.length > 0) {
       const selectedText = quill.getText(range.index, range.length).trim();
 
-      if (selectedText && !answers.some((answer) => answer.text === selectedText)) {
+      if (
+        selectedText &&
+        !answers.some((answer) => answer.text === selectedText)
+      ) {
         setAnswers([...answers, { text: selectedText, selected: false }]);
         const updatedPreview = preview.replace(
           new RegExp(`\\b${selectedText}\\b`, "g"),
@@ -76,7 +79,9 @@ const Question2 = () => {
       <h2 className="text-lg font-semibold text-gray-700">Question 2</h2>
 
       <div className="flex flex-col gap-2">
-        <label className="block text-sm font-medium text-gray-600">Preview*</label>
+        <label className="block text-sm font-medium text-gray-600">
+          Preview*
+        </label>
         <textarea
           value={preview}
           onChange={(e) => setPreview(e.target.value)}
@@ -87,7 +92,9 @@ const Question2 = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="block text-sm font-medium text-gray-600">Sentence*</label>
+        <label className="block text-sm font-medium text-gray-600">
+          Sentence*
+        </label>
         <div
           className="p-2 border border-gray-300 rounded-md cursor-pointer"
           onClick={() => setIsEditorVisible(true)}
@@ -150,7 +157,9 @@ const Question2 = () => {
       </div>
 
       <div className="flex items-center gap-2 mt-4">
-        <label className="block text-sm font-medium text-gray-600">Points</label>
+        <label className="block text-sm font-medium text-gray-600">
+          Points
+        </label>
         <input
           type="number"
           value={points}
@@ -158,12 +167,6 @@ const Question2 = () => {
           placeholder="Points"
           className="p-2 border border-gray-300 rounded-md w-20"
         />
-      </div>
-
-      {/* Vertical icons on the right */}
-      <div className="absolute top-1/2 right-[-40px] transform -translate-y-1/2 flex flex-col gap-2">
-        <IoIosAddCircleOutline size={28} className="cursor-pointer" />
-        <CiTrash size={28} className="cursor-pointer" />
       </div>
     </div>
   );
